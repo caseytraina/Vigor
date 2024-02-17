@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import DeviceActivity
 
 
 @MainActor
@@ -29,5 +30,6 @@ class DataViewModel: ObservableObject {
         }
         return nil
     }
-    
+
+        
 }
