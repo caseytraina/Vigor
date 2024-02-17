@@ -7,7 +7,7 @@
 
 import SwiftUI
 import FirebaseCore
-
+import FamilyControls
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     private var locationApi: LocationApi?
@@ -48,12 +48,22 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct Vigor: App {
   // register app delegate for Firebase setup
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    let center = AuthorizationCenter.shared
 
 
   var body: some Scene {
     WindowGroup {
       NavigationView {
         ContentView()
+              .onAppear {
+                  Task {
+                      do {
+                          try await center.requestAuthorization(for: .individual)
+                      } catch {
+                          print("Failed to enroll with error: \(error)")
+                      }
+                  }
+              }
       }
     }
   }

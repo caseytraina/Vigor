@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    
+    @StateObject var dataModel: DataViewModel = DataViewModel()
     
     
     
@@ -19,58 +19,8 @@ struct ContentView: View {
     var body: some View {
         
         
-        NavigationLink(destination: ContentView2(), label: {
-            Text("Go")
-        })
-        
+        Text("Hey")
         
     }
 
-}
-
-
-
-struct ContentView1: View {
-
-    
-    @Binding var score: Int
-    
-    var body: some View {
-        
-        VStack {
-            Text("\(score)")
-                .padding()
-                
-            Button(action: {
-                score += 1
-            }, label: {
-                Text("Increase")
-                    .foregroundStyle(.white)
-            })
-            .background(.black)
-            .opacity(0.5)
-            .padding()
-            .cornerRadius(10)
-            
-            
-        }
-
-        
-    }
-
-}
-struct ContentView2: View {
-    @StateObject private var locModel = LocationApi.shared
-    var body: some View {
-        VStack {
-            if let location = locModel.userLocation {
-                Text("User location: \(location.coordinate.latitude), \(location.coordinate.longitude)")
-            } else {
-                Text("Waiting for location...")
-            }
-        }
-        .onAppear {
-            locModel.startLocationUpdates()
-        }
-    }
 }
