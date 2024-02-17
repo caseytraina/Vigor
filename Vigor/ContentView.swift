@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SwiftData
+//import SwiftData
 
 struct ContentView: View {
 
@@ -19,7 +19,7 @@ struct ContentView: View {
     var body: some View {
         
         
-        NavigationLink(destination: ContentView1(score: $score), label: {
+        NavigationLink(destination: ContentView2(), label: {
             Text("Go")
         })
         
@@ -28,9 +28,6 @@ struct ContentView: View {
 
 }
 
-#Preview {
-    ContentView()
-}
 
 
 struct ContentView1: View {
@@ -61,4 +58,19 @@ struct ContentView1: View {
         
     }
 
+}
+struct ContentView2: View {
+    @StateObject private var locModel = LocationApi.shared
+    var body: some View {
+        VStack {
+            if let location = locModel.userLocation {
+                Text("User location: \(location.coordinate.latitude), \(location.coordinate.longitude)")
+            } else {
+                Text("Waiting for location...")
+            }
+        }
+        .onAppear {
+            locModel.startLocationUpdates()
+        }
+    }
 }
