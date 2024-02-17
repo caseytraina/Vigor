@@ -29,7 +29,6 @@ struct ProgressCircle: View {
                 .rotationEffect(Angle(degrees: 270)) // Start from the top
                 .animation(.linear, value: progress)
             
-            // Percentage Text
             CustomText(text: String(format: "%.0f%%", progress * 100), size: 32, bold: true, alignment: .center, color: .black)
         }
         .onAppear {
