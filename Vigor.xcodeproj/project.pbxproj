@@ -37,6 +37,7 @@
 		0273E6B52B80B334008018C6 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0273E6B42B80B334008018C6 /* DataViewModel.swift */; };
 		0273E6B62B80B334008018C6 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0273E6B42B80B334008018C6 /* DataViewModel.swift */; };
 		0273E6B72B80B334008018C6 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0273E6B42B80B334008018C6 /* DataViewModel.swift */; };
+		E8688BB02B80C19200206DAC /* LocationApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8688BAF2B80C19200206DAC /* LocationApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		0273E6B22B80ADD2008018C6 /* Vigor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vigor.entitlements; sourceTree = "<group>"; };
 		0273E6B32B80AE69008018C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0273E6B42B80B334008018C6 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
+		E8688BAF2B80C19200206DAC /* LocationApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			children = (
 				0273E6AA2B80A938008018C6 /* AuthViewModel.swift */,
 				0273E6B42B80B334008018C6 /* DataViewModel.swift */,
+				E8688BAF2B80C19200206DAC /* LocationApi.swift */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				0273E6AF2B80AA38008018C6 /* Structures.swift in Sources */,
 				0273E6AB2B80A938008018C6 /* AuthViewModel.swift in Sources */,
 				0273E6B52B80B334008018C6 /* DataViewModel.swift in Sources */,
+				E8688BB02B80C19200206DAC /* LocationApi.swift in Sources */,
 				021F7B192B8098BA00A61284 /* ContentView.swift in Sources */,
 				021F7B1B2B8098BA00A61284 /* Item.swift in Sources */,
 				021F7B172B8098BA00A61284 /* VigorApp.swift in Sources */,
@@ -523,6 +527,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -554,6 +559,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
