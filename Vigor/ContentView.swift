@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SwiftData
+//import SwiftData
 
 struct ContentView: View {
 
@@ -20,13 +20,7 @@ struct ContentView: View {
         
         
         Text("Hey")
-
         
     }
 
 }
-
-#Preview {
-    ContentView()
-}
-
