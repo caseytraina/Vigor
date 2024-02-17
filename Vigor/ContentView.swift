@@ -28,9 +28,6 @@ struct ContentView: View {
 
 }
 
-//#Preview {
-  //  ContentView()
-//}
 
 
 struct ContentView1: View {
@@ -63,7 +60,7 @@ struct ContentView1: View {
 
 }
 struct ContentView2: View {
-    @StateObject private var locModel = LocationApi()
+    @StateObject private var locModel = LocationApi.shared
     var body: some View {
         VStack {
             if let location = locModel.userLocation {
