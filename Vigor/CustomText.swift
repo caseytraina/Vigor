@@ -27,7 +27,7 @@ struct CustomText: View {
     var body: some View {
             Text(text)
                 .foregroundColor(color)
-                .font(Font.custom(bold ? "CircularStd-Bold" : "CircularStd-Book", size: size))
+                .font(Font.custom(bold ? "CircularStd-Black" : "CircularStd-Book", size: size))
                 .multilineTextAlignment(alignment)
     }
 }

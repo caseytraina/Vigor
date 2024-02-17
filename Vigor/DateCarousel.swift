@@ -30,9 +30,11 @@ struct DateCarousel: View {
                                     
                                     if let tomorrow = calendar.date(byAdding: .day, value: i, to: weekStartDate) {
                                         let day = calendar.component(.day, from: tomorrow)
-                                        CustomText(text: "\(day)", size: 18, bold: (weekNum, i) == (0,0) ? true : false, alignment: .center, color: .white)
+                                        CustomText(text: "\(day)", size: 18, bold: (i == 0) ? true : false, alignment: .center, color: .white)
+                                            .padding(5)
+                                            .background(Circle().stroke(lineWidth: 2).fill((i,weekNum) == (0,0) ? .white : .clear))
                                         if let char = dateFormatter.string(from: tomorrow).first {
-                                            CustomText(text: "\(char)", size: 18, bold: (weekNum, i) == (0,0) ? true : false, alignment: .center, color: .white)
+                                            CustomText(text: "\(char)", size: 18, bold: (i == 0) ? true : false, alignment: .center, color: .white)
                                         }
                                     }
                                     
@@ -47,7 +49,7 @@ struct DateCarousel: View {
                 }
                 
             }
-            .tabViewStyle(PageTabViewStyle())
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
 
         }
         .background(Color.accentColor)
@@ -56,4 +58,5 @@ struct DateCarousel: View {
 
 #Preview {
     DateCarousel()
+        .frame(height: screenSize.height * 0.1)
 }
