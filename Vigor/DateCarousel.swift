@@ -56,7 +56,7 @@ struct DateCarousel: View {
     }
 }
 
-#Preview {
-    DateCarousel()
-        .frame(height: screenSize.height * 0.1)
-}
+//#Preview {
+  //  DateCarousel()
+    //    .frame(height: screenSize.height * 0.1)
+//}

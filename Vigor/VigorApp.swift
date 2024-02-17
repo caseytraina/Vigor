@@ -8,13 +8,15 @@
 import SwiftUI
 import FirebaseCore
 import FamilyControls
+import FirebaseFirestore
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     private var locationApi: LocationApi?
+    var authModel = AuthViewModel()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Configure Firebase
-        FirebaseApp.configure()
+        //FirebaseApp.configure()
         application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
         
         
@@ -30,8 +32,27 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                    let dateFormatter = DateFormatter()
                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                    let formattedTimestamp = dateFormatter.string(from: timestamp)
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let date = dateFormatter.string(from: timestamp)
                    
                    print("- Fetched Location: Latitude: \(location.coordinate.latitude), Longitude: \(location.coordinate.longitude) + \(formattedTimestamp)")
+                let userId = self.authModel.user?.uid
+                let documentPath = "users/XhH7j17q0nPuc7U307HW/scores/\(date)/gps/\(formattedTimestamp)"
+                let db = Firestore.firestore()
+
+                db.document(documentPath).setData([
+                    "latitude": location.coordinate.latitude,
+                    "longitude": location.coordinate.longitude
+                ]) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                        completionHandler(.failed)
+                    } else {
+                        print("Document successfully written at \(documentPath)")
+                        completionHandler(.newData)
+                    }
+                }
+
                 completionHandler(.newData)
             } else if let error = error {
                 // Handle any errors
@@ -46,11 +67,19 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct Vigor: App {
-  // register app delegate for Firebase setup
-  @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     let center = AuthorizationCenter.shared
+    
+    @StateObject var authModel: AuthViewModel // This needs to be initialized properly
 
-
+    init() {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            _authModel = StateObject(wrappedValue: appDelegate.authModel)
+        } else {
+            _authModel = StateObject(wrappedValue: AuthViewModel()) // Fallback initialization
+        }
+        FirebaseApp.configure()
+    }
   var body: some Scene {
     WindowGroup {
       NavigationView {

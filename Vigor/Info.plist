@@ -2,6 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
+	<string>NSHealthRecordsUsageDescription</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>NSHealthShareUsageDescription</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>NSHealthUpdateUsageDescription</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>NSLocationAlwayInUseUsageDescription</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>NSLocationAlwaysAndWhenInUseUsageDescription</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>CircularStd-Black.otf</string>

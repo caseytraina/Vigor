@@ -37,8 +37,8 @@ struct ProgressCircle: View {
     }
 }
 
-#Preview {
-    ProgressCircle(progress: 0.25)
-        .frame(width: screenSize.width / 2, height: screenSize.height / 2)
+// #Preview {
+   // ProgressCircle(progress: 0.25)
+     //   .frame(width: screenSize.width / 2, height: screenSize.height / 2)
     
-}
+//}
