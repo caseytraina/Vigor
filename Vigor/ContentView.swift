@@ -6,74 +6,33 @@
 //
 
 import SwiftUI
-//import SwiftData
-/*
-struct ContentView: View {
-
-    @StateObject var dataModel: DataViewModel = DataViewModel()
-
-    
-    
-    @State var score: Int = 0
-    
-    var body: some View {
-        
-        
-        Text("Hey")
-        
-    }
-
-}
- */
-/*
-struct ContentView: View {
-
-    @StateObject var dataModel: DataViewModel = DataViewModel()
-    @State var score_overall: Int = 30
-    @State var score_trend: Int = 80
-    
-    var body: some View {
-        VStack {
-            DateCarousel()
-                .frame(height: 100) // Adjust the height as needed
-            
-            // Convert score to a CGFloat between 0 and 1
-            
-            
-            ProgressBar(score: CGFloat(score_overall))
-                            .frame(height: 20)
-                            .padding() // Add padding for better visual spacing
-            // Include the ProgressCircle here
-            let progressValue = CGFloat(score_trend) / 100
-            ProgressCircle(progress: progressValue)
-                .frame(width: 200, height: 100) // Set the size of the ProgressCircle
-            
-           
-        }
-       
-    }
-}
-
-*/
-import SwiftUI
 import SwiftUICharts
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct ContentView: View {
-//    @StateObject var dataModel: DataViewModel = DataViewModel()
+    
+    @StateObject var dataModel: DataViewModel = DataViewModel()
+    @EnvironmentObject var authModel: AuthViewModel
+    
+    @State var currentDate = Date()
+    
     @State var score_overall: Int = 30
     @State var score_trend: Int = 80
 
     @State var sheet = true
     
+//    @State var score: Score = Score(depression: 0, comparison: 0)
     var body: some View {
         GeometryReader { geo in
             ZStack {
                 Color.accentColor.ignoresSafeArea()
                 VStack {
-                    DateCarousel()
+                    DateCarousel(currentDate: $currentDate)
                         .frame(height: geo.size.height * 0.15)
                     Spacer()
-                    OverlayHome()
+                    OverlayHome(currentDate: $currentDate)
                         .background(.white)
                         .clipShape(RoundedCorner(radius: 15, corners: [.topLeft, .topRight]))
                         .ignoresSafeArea()
@@ -81,8 +40,40 @@ struct ContentView: View {
 
                 }
             }
+
         }
     }
+    
+    private func getScores() async {
+        let db = Firestore.firestore()
+        let date = IDformattedDate(date: currentDate)
+        let path = db.collection("users").document("PRRRkOFxB3NLrvKTgRmC9gLzzzg2").collection("scores").document(date)
+        
+        do {
+            let snap = try await path.getDocument()
+            let score = try snap.data(as: Score.self)
+            print(score)
+//            self.score = score
+        } catch {
+            print("Error getting score: \(error)")
+        }
+        
+    }
+
+
+    // Assuming you have a Score struct that conforms to Codable
+    struct Score: Codable {
+        let comparison: Int
+        let depression: Int
+        // Include other properties that match your Firestore document structure
+    }
+
+}
+
+struct Score: Codable {
+  @DocumentID var id: String?
+  var depression: Int
+  var comparison: Int
 }
 
 
@@ -94,10 +85,14 @@ enum Page {
 
 struct OverlayHome: View {
     
-    var demoData: [Double] = [38, 54, 58, 74, 57, 75, 73]
-    
+    @EnvironmentObject var authModel: AuthViewModel
+    @Binding var currentDate: Date
+    @State var compScores: [Double] = []
+    @State var scoresForTheWeek: [Score] = []
     @State var sheet = false
     @State var pageClicked: Page = .resources
+    
+    @State var depressionScore = 50
     
     @State var text = "Today, I'm feeling..."
     
@@ -118,7 +113,7 @@ struct OverlayHome: View {
                     .frame(width: geo.size.width * 0.95)
                     
                     VStack {
-                        LineChartView(data: demoData, title: "Welcome Back, Filip", legend: "Week-to-date", form: ChartForm.extraLarge, dropShadow: false)
+                        LineChartView(data: compScores.reversed(), title: "Welcome Back, \(authModel.current_user?.firstName ?? "Friend")", legend: "Week-to-date (\(formattedDate(date: currentDate)))", form: ChartForm.extraLarge, dropShadow: false)
                             .padding(5)
                     }
                     .frame(width: geo.size.width * 0.95)
@@ -129,7 +124,7 @@ struct OverlayHome: View {
 //                    Spacer()
                     
                     HStack {
-                        ProgressCircle(progress: 1.5)
+                        ProgressCircle(progress: $depressionScore)
                             .frame(width: geo.size.width * 0.15)
                             .padding()
                         CustomText(text: "You're doing great. Try going on a walk today to increase your score even more!", size: 16, bold: false, alignment: .leading, color: .black)
@@ -196,7 +191,7 @@ struct OverlayHome: View {
                         case .warning:
                             Warning()
                         case .notebook:
-                            Notebook(text: $text)
+                            Notebook(text: $text, currentDate: $currentDate)
                         }
                     }
                 }
@@ -205,11 +200,54 @@ struct OverlayHome: View {
             })
             .onChange(of: sheet) { newSheet in
                 if !newSheet {
-                    
+                    Task {
+                        await authModel.updateText(date: Date(), text: text)
+                    }
+                }
+            }
+            .onAppear {
+                Task {
+                    await self.getScoresForLastWeek()
+                }
+            }
+            .onChange(of: currentDate) { _ in
+                Task {
+                    await self.getScoresForLastWeek()
                 }
             }
             
         }
+    }
+    private func getScoresForLastWeek() async {
+        let db = Firestore.firestore()
+        var scoresForTheWeek: [Score] = []
+        self.scoresForTheWeek = []
+        for dayOffset in 0..<7 {
+            // Calculate the date for the day we are fetching the score
+            guard let dateForScore = Calendar.current.date(byAdding: .day, value: -dayOffset, to: currentDate) else {
+                continue
+            }
+            
+            // Format the date to match the document ID format in Firestore
+            let dateID = IDformattedDate(date: dateForScore)
+            
+            // Define the path to the document for that day
+            let path = db.collection("users").document(authModel.user?.uid ?? "").collection("scores").document(dateID)
+            
+            do {
+                // Attempt to fetch the document for the specific day
+                let snap = try await path.getDocument()
+                let score = try snap.data(as: Score.self)
+                scoresForTheWeek.append(score)
+                compScores.append(Double(score.comparison))
+            } catch {
+                print("Error getting score for \(dateID): \(error)")
+            }
+        }
+        depressionScore = scoresForTheWeek[0].depression
+        // After the loop, you have an array of scores for the week
+        // You can now use scoresForTheWeek as needed in your app
+        print(scoresForTheWeek)
     }
 }
 
@@ -233,11 +271,11 @@ struct RoundedCorner: Shape {
 struct Notebook: View {
     
     @Binding var text: String
-    
+    @Binding var currentDate: Date
     var body: some View {
         VStack {
             HStack {
-                CustomText(text: formattedDate(date: Date()), size: 24, bold: true, alignment: .leading, color: .white)
+                CustomText(text: formattedDate(date: currentDate), size: 24, bold: true, alignment: .leading, color: .white)
                     .padding()
                 Spacer()
             }
@@ -341,3 +379,14 @@ func formattedDate(date: Date) -> String {
     
     return "\(dateFormatter.string(from: date)) \(day)\(day.ordinalSuffix), \(year)"
 }
+
+func IDformattedDate(date: Date) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    
+    let day = Calendar.current.component(.day, from: date)
+    let year = Calendar.current.component(.year, from: date)
+    
+    return dateFormatter.string(from: date)
+}
+

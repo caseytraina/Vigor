@@ -51,6 +51,40 @@ class AuthViewModel: ObservableObject {
         }
     }
     
+    func updateText(date: Date, text: String) async {
+        let db = Firestore.firestore()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        let utcDate = dateFormatter.string(from: date)
+        
+        do {
+            if let uid = self.user?.uid {
+                let path = db.collection("users").document(uid).collection("journal").document(utcDate)
+                try await path.setData([
+                    "entry" : text
+                ])
+            }
+        } catch {
+            print("There was an error updating the text: \(error)")
+        }
+        
+        
+    }
+    
+    // email-based account creation. No longer in use.
+        func createAccount(email: String, password: String) async throws {
+
+            do {
+                try await Auth.auth().createUser(withEmail: email, password: password)
+                await configureUser(self.user?.uid ?? "")
+            } catch {
+                self.error = error
+                throw error
+            }
+        }
+    
     // text-message verification code for 2FA
     func sendCodeTo(_ phone: String) async {
         PhoneAuthProvider.provider()
@@ -122,14 +156,14 @@ class AuthViewModel: ObservableObject {
     }
 
     // This function adds or updates the user information housed in Firebase database.
-    func createUserInFirestore(firstName: String, lastName: String, phoneNumber: String) async {
+    func createUserInFirestore(firstName: String, lastName: String, email: String) async {
         
         let db = Firestore.firestore()
         
         do {
 
             // Merging data in case you want to add or update more fields in future
-            var data: [String: Any] = ["phoneNumber" : phoneNumber,
+            var data: [String: Any] = ["email" : email,
                                        "firstName" : firstName,
                                        "lastName" : lastName]
 
@@ -141,6 +175,7 @@ class AuthViewModel: ObservableObject {
                 print("No User detected.")
 
             }
+            await self.configureUser("")
         } catch {
             print("Failed to save user info: \(error.localizedDescription)")
         }
@@ -161,6 +196,17 @@ class AuthViewModel: ObservableObject {
         }
     }
 
+    
+    // email/password sign-in function
+        func signIn(email: String, password: String) async throws {
+            do {
+                try await Auth.auth().signIn(withEmail: email, password: password)
+                await configureUser("")
+            } catch {
+                self.error = error
+                throw error
+            }
+        }
 
     // This function retrieves and returns the user profile from firebase, given a database path input. This returns type "Profile"
     func fetchProfile(docRef: DocumentReference) async throws -> Profile {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProgressCircle: View {
     // The progress value should be between 0 and 1
-    var progress: CGFloat
+    @Binding var progress: Int
 
     @State var color: Color = .black
     
@@ -40,21 +40,16 @@ struct ProgressCircle: View {
                     Image(systemName: "arrow.up.right")
                         .resizable()
                         .frame(width: geo.size.width * 0.1, height: geo.size.width * 0.1)
-                    CustomText(text: String(format: "%.0f%%", progress * 100), size: geo.size.width * 0.2, bold: true, alignment: .center, color: .black)
+                    CustomText(text: String(format: "%.0f%", progress * 100), size: geo.size.width * 0.2, bold: true, alignment: .center, color: .black)
                 }
             }
             .frame(width: geo.size.width, height: geo.size.width)
             .onAppear {
                 
-                adjusted = progress/5.0
-                color = Color(red: (255.0 - progress*255)/255, green: progress, blue: 0)
+                adjusted = CGFloat(min(progress,100)/100)
+                color = Color(red: (255.0 - Double(progress*255))/255, green: Double(progress), blue: 0)
             }
         }
     }
 }
 
-#Preview {
-    ProgressCircle(progress: 1.5)
-        .frame(width: screenSize.width / 2, height: screenSize.height / 2)
-    
-}

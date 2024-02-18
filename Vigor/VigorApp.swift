@@ -43,7 +43,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                 let db = Firestore.firestore();
 
                 // Assuming you have these values already
-                let userId = "PRRRkOFxB3NLrvKTgRmC9gLzzzg2"
+                let userId = self.authModel.user?.uid ?? ""
                 
                 let longitude = location.coordinate.longitude;
                 let latitude = location.coordinate.latitude;
@@ -77,7 +77,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
         let center = AuthorizationCenter.shared
         
-        @StateObject var authModel: AuthViewModel // This needs to be initialized properly
+        @StateObject var authModel: AuthViewModel
         
         init() {
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -90,16 +90,23 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         var body: some Scene {
             WindowGroup {
                 NavigationView {
-                    ContentView()
-                        .onAppear {
-                            Task {
-                                do {
-                                    try await center.requestAuthorization(for: .individual)
-                                } catch {
-                                    print("Failed to enroll with error: \(error)")
+                    if authModel.isLoggedIn {
+                        ContentView()
+                            .environmentObject(authModel)
+                            .onAppear {
+                                Task {
+                                    do {
+                                        try await center.requestAuthorization(for: .individual)
+                                    } catch {
+                                        print("Failed to enroll with error: \(error)")
+                                    }
                                 }
                             }
-                        }
+                    } else {
+                        WelcomeView()
+                            .environmentObject(authModel)
+                    }
+
                 }
             }
         }

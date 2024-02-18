@@ -71,6 +71,12 @@
 		02904FDA2B821BD700D7EE7A /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FD92B821BD700D7EE7A /* Onboarding.swift */; };
 		02904FDB2B821BD700D7EE7A /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FD92B821BD700D7EE7A /* Onboarding.swift */; };
 		02904FDC2B821BD700D7EE7A /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FD92B821BD700D7EE7A /* Onboarding.swift */; };
+		02904FDE2B8230D800D7EE7A /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FDD2B8230D800D7EE7A /* TextFieldStyle.swift */; };
+		02904FDF2B8230D800D7EE7A /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FDD2B8230D800D7EE7A /* TextFieldStyle.swift */; };
+		02904FE02B8230D800D7EE7A /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FDD2B8230D800D7EE7A /* TextFieldStyle.swift */; };
+		02904FE22B82366E00D7EE7A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FE12B82366E00D7EE7A /* Login.swift */; };
+		02904FE32B82366E00D7EE7A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FE12B82366E00D7EE7A /* Login.swift */; };
+		02904FE42B82366E00D7EE7A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FE12B82366E00D7EE7A /* Login.swift */; };
 		E8688BB02B80C19200206DAC /* LocationApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8688BAF2B80C19200206DAC /* LocationApi.swift */; };
 		F4B37D5A2B81BB9100C3AF80 /* OverallWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B37D592B81BB9100C3AF80 /* OverallWarning.swift */; };
 		F4B37D5E2B81CDE900C3AF80 /* FetchOpenai.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B37D5D2B81CDE900C3AF80 /* FetchOpenai.swift */; };
@@ -123,6 +129,8 @@
 		0273E6D32B8154D0008018C6 /* CircularStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Bold.otf"; sourceTree = "<group>"; };
 		02904FD52B81FBCF00D7EE7A /* WarningTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningTile.swift; sourceTree = "<group>"; };
 		02904FD92B821BD700D7EE7A /* Onboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		02904FDD2B8230D800D7EE7A /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
+		02904FE12B82366E00D7EE7A /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		E8688BAF2B80C19200206DAC /* LocationApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationApi.swift; sourceTree = "<group>"; };
 		F4B37D592B81BB9100C3AF80 /* OverallWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallWarning.swift; sourceTree = "<group>"; };
 		F4B37D5D2B81CDE900C3AF80 /* FetchOpenai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchOpenai.swift; sourceTree = "<group>"; };
@@ -259,6 +267,8 @@
 				F4B37D5F2B81CE2700C3AF80 /* GPTtextbox.swift */,
 				02904FD52B81FBCF00D7EE7A /* WarningTile.swift */,
 				02904FD92B821BD700D7EE7A /* Onboarding.swift */,
+				02904FE12B82366E00D7EE7A /* Login.swift */,
+				02904FDD2B8230D800D7EE7A /* TextFieldStyle.swift */,
 			);
 			name = Items;
 			sourceTree = "<group>";
@@ -441,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4B37D602B81CE2700C3AF80 /* GPTtextbox.swift in Sources */,
+				02904FDE2B8230D800D7EE7A /* TextFieldStyle.swift in Sources */,
 				0273E6BE2B80C382008018C6 /* CustomText.swift in Sources */,
 				0273E6CA2B80D7F1008018C6 /* DateCarousel.swift in Sources */,
 				F4B37D5A2B81BB9100C3AF80 /* OverallWarning.swift in Sources */,
@@ -454,6 +465,7 @@
 				E8688BB02B80C19200206DAC /* LocationApi.swift in Sources */,
 				021F7B192B8098BA00A61284 /* ContentView.swift in Sources */,
 				021F7B1B2B8098BA00A61284 /* Item.swift in Sources */,
+				02904FE22B82366E00D7EE7A /* Login.swift in Sources */,
 				02904FDA2B821BD700D7EE7A /* Onboarding.swift in Sources */,
 				021F7B172B8098BA00A61284 /* VigorApp.swift in Sources */,
 			);
@@ -466,10 +478,12 @@
 				0273E6B62B80B334008018C6 /* DataViewModel.swift in Sources */,
 				0273E6CB2B80D7F1008018C6 /* DateCarousel.swift in Sources */,
 				02904FDB2B821BD700D7EE7A /* Onboarding.swift in Sources */,
+				02904FE32B82366E00D7EE7A /* Login.swift in Sources */,
 				0273E6AC2B80A938008018C6 /* AuthViewModel.swift in Sources */,
 				0273E6B02B80AA38008018C6 /* Structures.swift in Sources */,
 				021F7B2A2B8098BB00A61284 /* VigorTests.swift in Sources */,
 				0273E6C72B80C453008018C6 /* ProgressCircle.swift in Sources */,
+				02904FDF2B8230D800D7EE7A /* TextFieldStyle.swift in Sources */,
 				02904FD72B81FBCF00D7EE7A /* WarningTile.swift in Sources */,
 				0273E6BF2B80C382008018C6 /* CustomText.swift in Sources */,
 				0273E6C32B80C40E008018C6 /* Constant.swift in Sources */,
@@ -482,6 +496,7 @@
 			files = (
 				0273E6C42B80C40E008018C6 /* Constant.swift in Sources */,
 				021F7B362B8098BB00A61284 /* VigorUITestsLaunchTests.swift in Sources */,
+				02904FE42B82366E00D7EE7A /* Login.swift in Sources */,
 				021F7B342B8098BB00A61284 /* VigorUITests.swift in Sources */,
 				0273E6AD2B80A938008018C6 /* AuthViewModel.swift in Sources */,
 				0273E6CC2B80D7F1008018C6 /* DateCarousel.swift in Sources */,
@@ -489,6 +504,7 @@
 				0273E6B12B80AA38008018C6 /* Structures.swift in Sources */,
 				02904FD82B81FBCF00D7EE7A /* WarningTile.swift in Sources */,
 				0273E6B72B80B334008018C6 /* DataViewModel.swift in Sources */,
+				02904FE02B8230D800D7EE7A /* TextFieldStyle.swift in Sources */,
 				0273E6C82B80C453008018C6 /* ProgressCircle.swift in Sources */,
 				0273E6C02B80C382008018C6 /* CustomText.swift in Sources */,
 			);
