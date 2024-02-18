@@ -46,13 +46,10 @@ class LocationApi: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     nonisolated func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Failed to get user's location: \(error.localizedDescription)")
-        nonisolated func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
             let timestamp = Date() // Capture the current time of failure
             DispatchQueue.main.async {
                 self.locationFetchCompletionHandler?(nil, timestamp, error)
                 self.locationFetchCompletionHandler = nil // Reset the completion handler after handling error
             }
         }
-    }
 }
