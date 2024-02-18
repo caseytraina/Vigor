@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
-import SwiftData
+//import SwiftData
 
 struct ContentView: View {
 
-    
+    @StateObject var dataModel: DataViewModel = DataViewModel()
     
     
     
@@ -19,45 +19,7 @@ struct ContentView: View {
     var body: some View {
         
         
-        NavigationLink(destination: ContentView1(score: $score), label: {
-            Text("Go")
-        })
-        
-        
-    }
-
-}
-
-#Preview {
-    ContentView()
-}
-
-
-struct ContentView1: View {
-
-    
-    @Binding var score: Int
-    
-    var body: some View {
-        
-        VStack {
-            Text("\(score)")
-                .padding()
-                
-            Button(action: {
-                score += 1
-            }, label: {
-                Text("Increase")
-                    .foregroundStyle(.white)
-            })
-            .background(.black)
-            .opacity(0.5)
-            .padding()
-            .cornerRadius(10)
-            
-            
-        }
-
+        Text("Hey")
         
     }
 
