@@ -77,6 +77,12 @@
 		02904FE22B82366E00D7EE7A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FE12B82366E00D7EE7A /* Login.swift */; };
 		02904FE32B82366E00D7EE7A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FE12B82366E00D7EE7A /* Login.swift */; };
 		02904FE42B82366E00D7EE7A /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FE12B82366E00D7EE7A /* Login.swift */; };
+		02904FE62B82494600D7EE7A /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02904FE52B82494600D7EE7A /* config.plist */; };
+		02904FE72B82494600D7EE7A /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02904FE52B82494600D7EE7A /* config.plist */; };
+		02904FE82B82494600D7EE7A /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02904FE52B82494600D7EE7A /* config.plist */; };
+		02904FEA2B82495900D7EE7A /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FE92B82495900D7EE7A /* Resources.swift */; };
+		02904FEB2B82495900D7EE7A /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FE92B82495900D7EE7A /* Resources.swift */; };
+		02904FEC2B82495900D7EE7A /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FE92B82495900D7EE7A /* Resources.swift */; };
 		E8688BB02B80C19200206DAC /* LocationApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8688BAF2B80C19200206DAC /* LocationApi.swift */; };
 		F4B37D5A2B81BB9100C3AF80 /* OverallWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B37D592B81BB9100C3AF80 /* OverallWarning.swift */; };
 		F4B37D5E2B81CDE900C3AF80 /* FetchOpenai.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B37D5D2B81CDE900C3AF80 /* FetchOpenai.swift */; };
@@ -131,6 +137,8 @@
 		02904FD92B821BD700D7EE7A /* Onboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		02904FDD2B8230D800D7EE7A /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
 		02904FE12B82366E00D7EE7A /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		02904FE52B82494600D7EE7A /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		02904FE92B82495900D7EE7A /* Resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		E8688BAF2B80C19200206DAC /* LocationApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationApi.swift; sourceTree = "<group>"; };
 		F4B37D592B81BB9100C3AF80 /* OverallWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallWarning.swift; sourceTree = "<group>"; };
 		F4B37D5D2B81CDE900C3AF80 /* FetchOpenai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchOpenai.swift; sourceTree = "<group>"; };
@@ -253,6 +261,7 @@
 				0273E6B42B80B334008018C6 /* DataViewModel.swift */,
 				E8688BAF2B80C19200206DAC /* LocationApi.swift */,
 				F4B37D5D2B81CDE900C3AF80 /* FetchOpenai.swift */,
+				02904FE52B82494600D7EE7A /* config.plist */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -268,6 +277,7 @@
 				02904FD52B81FBCF00D7EE7A /* WarningTile.swift */,
 				02904FD92B821BD700D7EE7A /* Onboarding.swift */,
 				02904FE12B82366E00D7EE7A /* Login.swift */,
+				02904FE92B82495900D7EE7A /* Resources.swift */,
 				02904FDD2B8230D800D7EE7A /* TextFieldStyle.swift */,
 			);
 			name = Items;
@@ -411,6 +421,7 @@
 				0273E6D72B8154D0008018C6 /* CircularStd-Medium.otf in Resources */,
 				021F7B432B80A15000A61284 /* GoogleService-Info.plist in Resources */,
 				021F7B202B8098BB00A61284 /* Preview Assets.xcassets in Resources */,
+				02904FE62B82494600D7EE7A /* config.plist in Resources */,
 				021F7B1D2B8098BB00A61284 /* Assets.xcassets in Resources */,
 				0273E6DD2B8154D0008018C6 /* CircularStd-Light.otf in Resources */,
 				0273E6D42B8154D0008018C6 /* CircularStd-Book.otf in Resources */,
@@ -421,6 +432,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02904FE72B82494600D7EE7A /* config.plist in Resources */,
 				021F7B442B80A15000A61284 /* GoogleService-Info.plist in Resources */,
 				0273E6E12B8154D0008018C6 /* CircularStd-Bold.otf in Resources */,
 				0273E6D52B8154D0008018C6 /* CircularStd-Book.otf in Resources */,
@@ -434,6 +446,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02904FE82B82494600D7EE7A /* config.plist in Resources */,
 				021F7B452B80A15000A61284 /* GoogleService-Info.plist in Resources */,
 				0273E6E22B8154D0008018C6 /* CircularStd-Bold.otf in Resources */,
 				0273E6D62B8154D0008018C6 /* CircularStd-Book.otf in Resources */,
@@ -454,6 +467,7 @@
 				02904FDE2B8230D800D7EE7A /* TextFieldStyle.swift in Sources */,
 				0273E6BE2B80C382008018C6 /* CustomText.swift in Sources */,
 				0273E6CA2B80D7F1008018C6 /* DateCarousel.swift in Sources */,
+				02904FEA2B82495900D7EE7A /* Resources.swift in Sources */,
 				F4B37D5A2B81BB9100C3AF80 /* OverallWarning.swift in Sources */,
 				0273E6AF2B80AA38008018C6 /* Structures.swift in Sources */,
 				0273E6AB2B80A938008018C6 /* AuthViewModel.swift in Sources */,
@@ -487,6 +501,7 @@
 				02904FD72B81FBCF00D7EE7A /* WarningTile.swift in Sources */,
 				0273E6BF2B80C382008018C6 /* CustomText.swift in Sources */,
 				0273E6C32B80C40E008018C6 /* Constant.swift in Sources */,
+				02904FEB2B82495900D7EE7A /* Resources.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +518,7 @@
 				02904FDC2B821BD700D7EE7A /* Onboarding.swift in Sources */,
 				0273E6B12B80AA38008018C6 /* Structures.swift in Sources */,
 				02904FD82B81FBCF00D7EE7A /* WarningTile.swift in Sources */,
+				02904FEC2B82495900D7EE7A /* Resources.swift in Sources */,
 				0273E6B72B80B334008018C6 /* DataViewModel.swift in Sources */,
 				02904FE02B8230D800D7EE7A /* TextFieldStyle.swift in Sources */,
 				0273E6C82B80C453008018C6 /* ProgressCircle.swift in Sources */,

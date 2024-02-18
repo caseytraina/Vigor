@@ -8,27 +8,31 @@
 import Foundation
 import SwiftUI
 
-struct OpenAIResponseView: View {
-    @State private var openAIResponse: String = "Loading response..."
-
-    var body: some View {
-        VStack {
-            Text("OpenAI Response:")
-                .font(.headline)
-                .padding()
-
-            TextEditor(text: $openAIResponse)
-                .frame(height: 200)
-                .padding()
-                .border(Color.gray, width: 1)
-                .cornerRadius(5)
-        }
-        .onAppear {
-            fetchOpenAIResponse { response in
-                DispatchQueue.main.async {
-                    self.openAIResponse = response
-                }
+// OpenAIResponseFetcher.swift
+class OpenAIResponseFetcher: ObservableObject {
+    @Published var response: String = "Fetching response..."
+    
+    func fetchResponse() {
+        //score = fetch it from database
+        
+        fetchOpenAIResponse(score: 80) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.response = result
             }
         }
     }
 }
+
+// ContentView.swift
+struct GPTContent: View {
+    @StateObject private var fetcher = OpenAIResponseFetcher()
+
+    var body: some View {
+        CustomText(text: fetcher.response, size: 14, bold: false, alignment: .leading, color: .black)
+            .lineLimit(3)
+            .onAppear {
+                fetcher.fetchResponse()
+            }
+    }
+}
+

@@ -127,7 +127,7 @@ struct OverlayHome: View {
                         ProgressCircle(progress: $depressionScore)
                             .frame(width: geo.size.width * 0.15)
                             .padding()
-                        CustomText(text: "You're doing great. Try going on a walk today to increase your score even more!", size: 16, bold: false, alignment: .leading, color: .black)
+                        GPTContent()
                         Spacer()
                     }
                     .clipShape(
@@ -240,11 +240,13 @@ struct OverlayHome: View {
                 let score = try snap.data(as: Score.self)
                 scoresForTheWeek.append(score)
                 compScores.append(Double(score.comparison))
+                if score.depression > 0 {
+                    depressionScore = score.depression
+                }
             } catch {
                 print("Error getting score for \(dateID): \(error)")
             }
         }
-        depressionScore = scoresForTheWeek[0].depression
         // After the loop, you have an array of scores for the week
         // You can now use scoresForTheWeek as needed in your app
         print(scoresForTheWeek)
