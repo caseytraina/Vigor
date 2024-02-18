@@ -15,8 +15,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     var authModel = AuthViewModel()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Configure Firebase
-        //FirebaseApp.configure()
         application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
         
         
@@ -45,8 +43,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                 let db = Firestore.firestore();
 
                 // Assuming you have these values already
-                let userId = "PRRRkOFxB3NLrvKTgRmC9gLzzzg2";
-                let date1 = date;
+                let userId = "PRRRkOFxB3NLrvKTgRmC9gLzzzg2"
                 
                 let longitude = location.coordinate.longitude;
                 let latitude = location.coordinate.latitude;
@@ -57,7 +54,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                                 .collection("gps").document(formattedTimestamp);
 
                 // Adding the location data
-                let geo = GeoPoint(latitude: latitude, longitude: latitude)
+                let geo = GeoPoint(latitude: latitude, longitude: longitude)
                 let time = Timestamp(date: Date())
                 
                 gpsRef.setData([
