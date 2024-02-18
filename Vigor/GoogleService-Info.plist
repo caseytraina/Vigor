@@ -5,7 +5,7 @@
 	<key></key>
 	<string></string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>NSLocationWhenInUseUsageDescription</string>
+	<string>NSLocationAlwaysAndWhenInUseUsageDescription</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAfS7ykzfnVLJ6lwmgL8t-NowVsWQw57zQ</string>
 	<key>GCM_SENDER_ID</key>

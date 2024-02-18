@@ -32,6 +32,6 @@ struct CustomText: View {
     }
 }
 
-#Preview {
-    CustomText(text: "Text", size: 24, bold: true, alignment: .center, color: .black)
-}
+//#Preview {
+  //  CustomText(text: "Text", size: 24, bold: true, alignment: .center, color: .black)
+//}
