@@ -99,6 +99,8 @@ struct OverlayHome: View {
     @State var sheet = false
     @State var pageClicked: Page = .resources
     
+    @State var text = "Today, I'm feeling..."
+    
     var body: some View {
         GeometryReader { geo in
             VStack {
@@ -183,16 +185,29 @@ struct OverlayHome: View {
             // Fill the available space
             .background(Color.white) // Specify a background color
             .sheet(isPresented: $sheet, content: {
-                switch pageClicked {
-                case .resources:
-                    Text("Resources")
-                case .warning:
-                    Text("Warning")
-                case .notebook:
-                    Text("Notebook")
-
+                ZStack {
+                    if pageClicked == .notebook {
+                        Color.accentColor.ignoresSafeArea()
+                    }
+                    VStack {
+                        switch pageClicked {
+                        case .resources:
+                            Resources()
+                        case .warning:
+                            Warning()
+                        case .notebook:
+                            Notebook(text: $text)
+                        }
+                    }
                 }
+                .presentationDetents([.medium])
+
             })
+            .onChange(of: sheet) { newSheet in
+                if !newSheet {
+                    
+                }
+            }
             
         }
     }
@@ -214,3 +229,115 @@ struct RoundedCorner: Shape {
     }
 }
 
+
+struct Notebook: View {
+    
+    @Binding var text: String
+    
+    var body: some View {
+        VStack {
+            HStack {
+                CustomText(text: formattedDate(date: Date()), size: 24, bold: true, alignment: .leading, color: .white)
+                    .padding()
+                Spacer()
+            }
+            .frame(width: screenSize.width * 0.95)
+
+            TextEditor(text: $text)
+                .font(Font.custom("CircularStd-Book", size: 18))
+                .multilineTextAlignment(.leading)
+                .padding(.top)
+                .frame(width: screenSize.width * 0.95, height: screenSize.height * 0.3)
+                .cornerRadius(10)
+                
+        }
+    }
+    
+}
+
+
+struct Warning: View {
+    
+    
+    var body: some View {
+        VStack {
+            HStack {
+                WarningTile()
+                    .aspectRatio(1, contentMode: .fit)
+                    .frame(width: screenSize.width * 0.2)
+                Spacer()
+            }
+            .frame(width: screenSize.width * 0.95)
+            .padding()
+
+            VStack(alignment: .leading) {
+                CustomText(text: "You have been exhibiting higher than normal rates of tendencies that leave you at risk of developing depression", size: 18, bold: true, alignment: .leading, color: .black)
+                    .padding(.bottom, 10)
+                CustomText(text: "If you think you are in need of it, seek help in our resource section.", size: 18, bold: true, alignment: .leading, color: .black)
+            }
+            .padding()
+            .frame(width: screenSize.width * 0.95)
+            .foregroundStyle(.white)
+            .background(.white)
+            .clipShape(
+                RoundedRectangle(cornerRadius: 15)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 15)
+                    .stroke(Color.gray, lineWidth: 1)
+                    .brightness(0.25)
+            )
+
+            Spacer()
+
+                
+        }
+    }
+    
+}
+
+struct Resources: View {
+    var body: some View {
+        Form {
+            Section(header: CustomText(text: "Proffesional Help Resources", size: 18, bold: false, alignment: .center, color: .black)
+                .padding(.top)) {
+                    Text("Emergency Help Line Number: \n 988")
+                    Text("SAMHSA National Help Line: 1-800-662-4357")
+                    
+                }
+            Section(header: CustomText(text: "Self-Help Resources", size: 18, bold: false, alignment: .center, color: .black)
+                .padding(.top)) {
+                    Text("Online Therapist Finder: betterhelp.com")
+                    Text("Mindfulness Guided Meditation App: Headspace")
+                }
+            
+        }
+    }
+}
+
+
+extension Int {
+    var ordinalSuffix: String {
+        let ones = self % 10
+        let tens = (self / 10) % 10
+        if tens == 1 {
+            return "th"
+        }
+        switch ones {
+        case 1: return "st"
+        case 2: return "nd"
+        case 3: return "rd"
+        default: return "th"
+        }
+    }
+}
+
+func formattedDate(date: Date) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMMM"
+    
+    let day = Calendar.current.component(.day, from: date)
+    let year = Calendar.current.component(.year, from: date)
+    
+    return "\(dateFormatter.string(from: date)) \(day)\(day.ordinalSuffix), \(year)"
+}
