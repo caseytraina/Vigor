@@ -64,6 +64,10 @@
 		0273E6E02B8154D0008018C6 /* CircularStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0273E6D32B8154D0008018C6 /* CircularStd-Bold.otf */; };
 		0273E6E12B8154D0008018C6 /* CircularStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0273E6D32B8154D0008018C6 /* CircularStd-Bold.otf */; };
 		0273E6E22B8154D0008018C6 /* CircularStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0273E6D32B8154D0008018C6 /* CircularStd-Bold.otf */; };
+		02904FD42B81EB6200D7EE7A /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 02904FD32B81EB6200D7EE7A /* SwiftUICharts */; };
+		02904FD62B81FBCF00D7EE7A /* WarningTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FD52B81FBCF00D7EE7A /* WarningTile.swift */; };
+		02904FD72B81FBCF00D7EE7A /* WarningTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FD52B81FBCF00D7EE7A /* WarningTile.swift */; };
+		02904FD82B81FBCF00D7EE7A /* WarningTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02904FD52B81FBCF00D7EE7A /* WarningTile.swift */; };
 		E8688BB02B80C19200206DAC /* LocationApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8688BAF2B80C19200206DAC /* LocationApi.swift */; };
 		F4B37D5A2B81BB9100C3AF80 /* OverallWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B37D592B81BB9100C3AF80 /* OverallWarning.swift */; };
 		F4B37D5E2B81CDE900C3AF80 /* FetchOpenai.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B37D5D2B81CDE900C3AF80 /* FetchOpenai.swift */; };
@@ -114,6 +118,7 @@
 		0273E6D12B8154D0008018C6 /* CircularStd-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Black.otf"; sourceTree = "<group>"; };
 		0273E6D22B8154D0008018C6 /* CircularStd-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Light.otf"; sourceTree = "<group>"; };
 		0273E6D32B8154D0008018C6 /* CircularStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Bold.otf"; sourceTree = "<group>"; };
+		02904FD52B81FBCF00D7EE7A /* WarningTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningTile.swift; sourceTree = "<group>"; };
 		E8688BAF2B80C19200206DAC /* LocationApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationApi.swift; sourceTree = "<group>"; };
 		F4B37D592B81BB9100C3AF80 /* OverallWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallWarning.swift; sourceTree = "<group>"; };
 		F4B37D5D2B81CDE900C3AF80 /* FetchOpenai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchOpenai.swift; sourceTree = "<group>"; };
@@ -132,6 +137,7 @@
 				021F7B4E2B80A1C500A61284 /* FirebaseFirestore in Frameworks */,
 				021F7B4C2B80A1C500A61284 /* FirebaseAuthCombine-Community in Frameworks */,
 				021F7B502B80A1C500A61284 /* FirebaseFirestoreCombine-Community in Frameworks */,
+				02904FD42B81EB6200D7EE7A /* SwiftUICharts in Frameworks */,
 				021F7B4A2B80A1C500A61284 /* FirebaseAuth in Frameworks */,
 				021F7B522B80A1C500A61284 /* FirebaseFirestoreSwift in Frameworks */,
 				021F7B562B80A1C500A61284 /* FirebaseFunctionsCombine-Community in Frameworks */,
@@ -247,6 +253,7 @@
 				0273E6C92B80D7F1008018C6 /* DateCarousel.swift */,
 				F4B37D592B81BB9100C3AF80 /* OverallWarning.swift */,
 				F4B37D5F2B81CE2700C3AF80 /* GPTtextbox.swift */,
+				02904FD52B81FBCF00D7EE7A /* WarningTile.swift */,
 			);
 			name = Items;
 			sourceTree = "<group>";
@@ -290,6 +297,7 @@
 				021F7B552B80A1C500A61284 /* FirebaseFunctionsCombine-Community */,
 				021F7B572B80A1C500A61284 /* FirebaseStorage */,
 				021F7B592B80A1C500A61284 /* FirebaseStorageCombine-Community */,
+				02904FD32B81EB6200D7EE7A /* SwiftUICharts */,
 			);
 			productName = Vigor;
 			productReference = 021F7B132B8098BA00A61284 /* Vigor.app */;
@@ -365,6 +373,7 @@
 			mainGroup = 021F7B0A2B8098BA00A61284;
 			packageReferences = (
 				021F7B462B80A1C500A61284 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				02904FD22B81EB6200D7EE7A /* XCRemoteSwiftPackageReference "chartview" */,
 			);
 			productRefGroup = 021F7B142B8098BA00A61284 /* Products */;
 			projectDirPath = "";
@@ -432,6 +441,7 @@
 				F4B37D5A2B81BB9100C3AF80 /* OverallWarning.swift in Sources */,
 				0273E6AF2B80AA38008018C6 /* Structures.swift in Sources */,
 				0273E6AB2B80A938008018C6 /* AuthViewModel.swift in Sources */,
+				02904FD62B81FBCF00D7EE7A /* WarningTile.swift in Sources */,
 				0273E6C22B80C40E008018C6 /* Constant.swift in Sources */,
 				0273E6C62B80C453008018C6 /* ProgressCircle.swift in Sources */,
 				0273E6B52B80B334008018C6 /* DataViewModel.swift in Sources */,
@@ -453,6 +463,7 @@
 				0273E6B02B80AA38008018C6 /* Structures.swift in Sources */,
 				021F7B2A2B8098BB00A61284 /* VigorTests.swift in Sources */,
 				0273E6C72B80C453008018C6 /* ProgressCircle.swift in Sources */,
+				02904FD72B81FBCF00D7EE7A /* WarningTile.swift in Sources */,
 				0273E6BF2B80C382008018C6 /* CustomText.swift in Sources */,
 				0273E6C32B80C40E008018C6 /* Constant.swift in Sources */,
 			);
@@ -468,6 +479,7 @@
 				0273E6AD2B80A938008018C6 /* AuthViewModel.swift in Sources */,
 				0273E6CC2B80D7F1008018C6 /* DateCarousel.swift in Sources */,
 				0273E6B12B80AA38008018C6 /* Structures.swift in Sources */,
+				02904FD82B81FBCF00D7EE7A /* WarningTile.swift in Sources */,
 				0273E6B72B80B334008018C6 /* DataViewModel.swift in Sources */,
 				0273E6C82B80C453008018C6 /* ProgressCircle.swift in Sources */,
 				0273E6C02B80C382008018C6 /* CustomText.swift in Sources */,
@@ -803,6 +815,14 @@
 				minimumVersion = 10.21.0;
 			};
 		};
+		02904FD22B81EB6200D7EE7A /* XCRemoteSwiftPackageReference "chartview" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apppear/chartview.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -855,6 +875,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 021F7B462B80A1C500A61284 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		02904FD32B81EB6200D7EE7A /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02904FD22B81EB6200D7EE7A /* XCRemoteSwiftPackageReference "chartview" */;
+			productName = SwiftUICharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

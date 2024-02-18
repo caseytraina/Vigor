@@ -13,32 +13,48 @@ struct ProgressCircle: View {
 
     @State var color: Color = .black
     
+    @State var adjusted: CGFloat = 0.0
+    
     var body: some View {
-        ZStack {
-            // Background Circle
-            Circle()
-                .stroke(lineWidth: 20)
-                .opacity(0.3)
-                .foregroundColor(color)
-            
-            // Foreground Circle
-            Circle()
-                .trim(from: 0.0, to: progress)
-                .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
-                .foregroundColor(color)
-                .rotationEffect(Angle(degrees: 270)) // Start from the top
-                .animation(.linear, value: progress)
-            
-            CustomText(text: String(format: "%.0f%%", progress * 100), size: 32, bold: true, alignment: .center, color: .black)
-        }
-        .onAppear {
-            color = Color(red: (255.0 - progress*255)/255, green: progress, blue: 0)
+        GeometryReader { geo in
+            ZStack {
+                // Background Circle
+                Circle()
+                    .stroke(lineWidth: geo.size.width * 0.2)
+                    .opacity(0.3)
+                    .foregroundColor(.gray)
+                    .frame(width: geo.size.width, height: geo.size.width)
+
+                
+                // Foreground Circle
+                Circle()
+                    .trim(from: 0.0, to: adjusted)
+                    .stroke(style: StrokeStyle(lineWidth: geo.size.width * 0.15, lineCap: .round, lineJoin: .round))
+                    .foregroundStyle(Gradient(colors: [.purple, .blue]))
+                    .rotationEffect(Angle(degrees: 270)) // Start from the top
+                    .animation(.linear, value: progress)
+                    .frame(width: geo.size.width, height: geo.size.width)
+
+                
+                HStack {
+                    Image(systemName: "arrow.up.right")
+                        .resizable()
+                        .frame(width: geo.size.width * 0.1, height: geo.size.width * 0.1)
+                    CustomText(text: String(format: "%.0f%%", progress * 100), size: geo.size.width * 0.2, bold: true, alignment: .center, color: .black)
+                }
+            }
+            .frame(width: geo.size.width, height: geo.size.width)
+            .onAppear {
+                
+                adjusted = progress/5.0
+                color = Color(red: (255.0 - progress*255)/255, green: progress, blue: 0)
+            }
         }
     }
 }
 
 #Preview {
-    ProgressCircle(progress: 0.25)
+    ProgressCircle(progress: 1.5)
         .frame(width: screenSize.width / 2, height: screenSize.height / 2)
     
 }
