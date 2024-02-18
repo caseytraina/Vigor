@@ -65,6 +65,9 @@
 		0273E6E12B8154D0008018C6 /* CircularStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0273E6D32B8154D0008018C6 /* CircularStd-Bold.otf */; };
 		0273E6E22B8154D0008018C6 /* CircularStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0273E6D32B8154D0008018C6 /* CircularStd-Bold.otf */; };
 		E8688BB02B80C19200206DAC /* LocationApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8688BAF2B80C19200206DAC /* LocationApi.swift */; };
+		F4B37D5A2B81BB9100C3AF80 /* OverallWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B37D592B81BB9100C3AF80 /* OverallWarning.swift */; };
+		F4B37D5E2B81CDE900C3AF80 /* FetchOpenai.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B37D5D2B81CDE900C3AF80 /* FetchOpenai.swift */; };
+		F4B37D602B81CE2700C3AF80 /* GPTtextbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B37D5F2B81CE2700C3AF80 /* GPTtextbox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +115,9 @@
 		0273E6D22B8154D0008018C6 /* CircularStd-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Light.otf"; sourceTree = "<group>"; };
 		0273E6D32B8154D0008018C6 /* CircularStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularStd-Bold.otf"; sourceTree = "<group>"; };
 		E8688BAF2B80C19200206DAC /* LocationApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationApi.swift; sourceTree = "<group>"; };
+		F4B37D592B81BB9100C3AF80 /* OverallWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallWarning.swift; sourceTree = "<group>"; };
+		F4B37D5D2B81CDE900C3AF80 /* FetchOpenai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchOpenai.swift; sourceTree = "<group>"; };
+		F4B37D5F2B81CE2700C3AF80 /* GPTtextbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTtextbox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +234,7 @@
 				0273E6AA2B80A938008018C6 /* AuthViewModel.swift */,
 				0273E6B42B80B334008018C6 /* DataViewModel.swift */,
 				E8688BAF2B80C19200206DAC /* LocationApi.swift */,
+				F4B37D5D2B81CDE900C3AF80 /* FetchOpenai.swift */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -238,6 +245,8 @@
 				0273E6BD2B80C381008018C6 /* CustomText.swift */,
 				0273E6C52B80C453008018C6 /* ProgressCircle.swift */,
 				0273E6C92B80D7F1008018C6 /* DateCarousel.swift */,
+				F4B37D592B81BB9100C3AF80 /* OverallWarning.swift */,
+				F4B37D5F2B81CE2700C3AF80 /* GPTtextbox.swift */,
 			);
 			name = Items;
 			sourceTree = "<group>";
@@ -417,13 +426,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B37D602B81CE2700C3AF80 /* GPTtextbox.swift in Sources */,
 				0273E6BE2B80C382008018C6 /* CustomText.swift in Sources */,
 				0273E6CA2B80D7F1008018C6 /* DateCarousel.swift in Sources */,
+				F4B37D5A2B81BB9100C3AF80 /* OverallWarning.swift in Sources */,
 				0273E6AF2B80AA38008018C6 /* Structures.swift in Sources */,
 				0273E6AB2B80A938008018C6 /* AuthViewModel.swift in Sources */,
 				0273E6C22B80C40E008018C6 /* Constant.swift in Sources */,
 				0273E6C62B80C453008018C6 /* ProgressCircle.swift in Sources */,
 				0273E6B52B80B334008018C6 /* DataViewModel.swift in Sources */,
+				F4B37D5E2B81CDE900C3AF80 /* FetchOpenai.swift in Sources */,
 				E8688BB02B80C19200206DAC /* LocationApi.swift in Sources */,
 				021F7B192B8098BA00A61284 /* ContentView.swift in Sources */,
 				021F7B1B2B8098BA00A61284 /* Item.swift in Sources */,
