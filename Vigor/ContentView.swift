@@ -182,17 +182,22 @@ struct OverlayHome: View {
             .frame(width: geo.size.width, height: geo.size.height)
             // Fill the available space
             .background(Color.white) // Specify a background color
-            .sheet(isPresented: $sheet, content: {
-                switch pageClicked {
-                case .resources:
-                    Text("Resources")
-                case .warning:
-                    Text("Warning")
-                case .notebook:
-                    Text("Notebook")
 
+            .sheet(isPresented: $sheet, content: {
+                VStack {
+                    switch pageClicked {
+                    case .resources:
+                        Text("Resources")
+                    case .warning:
+                        Text("Warning")
+                    case .notebook:
+                        Notebook()
+                        
+                    }
                 }
+                .presentationDetents([.medium])
             })
+
             
         }
     }
@@ -214,3 +219,56 @@ struct RoundedCorner: Shape {
     }
 }
 
+struct Notebook: View {
+    
+    @State var text = ""
+    
+    var body: some View {
+        
+        VStack {
+            HStack {
+                CustomText(text: "\(formattedDate(date: Date()))", size: 24, bold: true, alignment: .center, color: .black)
+                    .padding()
+                Spacer()
+            }
+            Spacer()
+            TextField(text: $text, label: {
+                Text("Label")
+            })
+                .lineLimit(3)
+            Spacer()
+            
+        }
+        
+        
+    }
+}
+
+
+
+
+extension Int {
+    var ordinalSuffix: String {
+        let ones = self % 10
+        let tens = (self / 10) % 10
+        if tens == 1 {
+            return "th"
+        }
+        switch ones {
+        case 1: return "st"
+        case 2: return "nd"
+        case 3: return "rd"
+        default: return "th"
+        }
+    }
+}
+
+func formattedDate(date: Date) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMMM"
+    
+    let day = Calendar.current.component(.day, from: date)
+    let year = Calendar.current.component(.year, from: date)
+    
+    return "\(dateFormatter.string(from: date)) \(day)\(day.ordinalSuffix), \(year)"
+}

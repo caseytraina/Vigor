@@ -55,15 +55,15 @@ struct Vigor: App {
     WindowGroup {
       NavigationView {
         ContentView()
-              .onAppear {
-                  Task {
-                      do {
-                          try await center.requestAuthorization(for: .individual)
-                      } catch {
-                          print("Failed to enroll with error: \(error)")
-                      }
+          .onAppear {
+              Task {
+                  do {
+                      try await center.requestAuthorization(for: .individual)
+                  } catch {
+                      print("Failed to enroll with error: \(error)")
                   }
               }
+          }
       }
     }
   }
